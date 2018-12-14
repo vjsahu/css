@@ -1,0 +1,232 @@
+<div class="container">
+<div class="col-sm-3 col-lg-3 col-md-3 col-xs-3" style="height: 500px;border: 1px solid;overflow:auto;">
+</div>
+<div class="container-fluid col-sm-9 col-lg-9 col-md-9 col-xs-9">
+<div class="table table-bordered opaltable" style="height:500px;width:100%;border:1px solid black;overflow:auto">
+<div class="row">
+<!-- <div class="col-lg-2 col-md-2 col-sm-2">
+<a href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-plus-sign"></span> Plus
+</a>
+</div> -->
+<div class="col-lg-3 col-md-3 col-sm-3">
+<label class="opalLabel" for="classes">Reusable classes:</label>
+<input type="text" [(ngModel)]="reusable.reuseAbleClass">
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<label class="opalLabel" for="classes">Reusable Method Name:</label>
+<input type="text" [(ngModel)]="reusable.reuseAbleMethod">
+</div>
+
+
+
+<div class="col-lg-3 col-md-3 col-sm-3">
+
+<label class="opalLabel" for="classes">Parameters:</label>
+
+<input type="text" [(ngModel)]="reusable.reuseAbleParameters">
+</div>
+</div>
+<br>
+
+ <div>
+          <a class="btn btn-info btn-lg" (click)="Adddata()"><span class="glyphicon glyphicon-plus-sign"></span> Add </a>
+          <a class="btn btn-info btn-lg" (click)="clear()"><span class="glyphicon glyphicon-trash"></span> Clear </a>
+          <a class="btn btn-info btn-lg" (click)="delete()" *ngIf="disable==true"><span class="glyphicon glyphicon-minus"></span> Delete </a>
+
+        </div>
+
+
+        <div style=" border:1px solid black;">
+            <table class="opaltable" style="width:100%;" >
+              <thead>
+                <tr style="background-color: lightgray;">
+                  <th >Action</th>
+                  <th >Object</th>
+                  <th >Input</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="tbodydiv" style="height: 150px;border:1px solid black;">
+            <table class="opaltable" style=" width:105%;">
+              <tr *ngFor="let data of objectData; let i = index;"  (click)="row(data,i)" >
+               <td style="padding: 0px;font-size: 15px" >
+                <input class="inputtext" type="text" list="browsers" value={{data.action}} style="height: 20px"/>
+                <datalist id="browsers" >
+                  <option>Chrome</option>
+                  <option>Firefox</option>
+                  <option>Internet Explorer</option>
+                  <option>Opera</option>
+                  <option>Safari</option>
+                  <option>Microsoft Edge</option>
+                </datalist>
+               </td>
+                 
+                
+                <td style="padding: 0px;font-size: 15px">
+                  <input class="inputtext" type="text" list="object" value={{data.object}} style="height: 20px;"/>
+                  <datalist id="object">
+                    <option>css</option>
+                    <option>Xpath</option>
+                    <option>Link</option>
+                    <option>Id</option>
+                  </datalist>
+                </td>
+                <td style="padding: 0px;font-size: 15px">
+                  <input class="inputtext" type="text" list="input" value={{data.input}} style="height: 20px;"/>
+                </td>
+                
+            </table>
+          </div>
+         
+         <a class="btn btn-info btn-lg" (click)="SendMethod(reusable)" style="margin-left: 45%" *ngIf="saved==true">Save </a>
+
+         <br>
+       
+         <br>
+
+        
+       <div class="container"  style="font-size: 15px;background-color: lightgray" *ngIf="add==true">
+        <div class="col-lg-3 col-md-3 col-sm-3" >
+          <label for="classes">Action:</label>
+         
+          <select [(ngModel)]="act.actions" (change)="excel(act.actions)"  style="width:150px" >
+            <option></option>
+            <option *ngFor="let act of resultactions"  [ngValue]="act" >{{act.actions}}</option>  
+            </select>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <label for="classes"> Object:</label>
+          <select [(ngModel)]="act.object" style="width:150px">
+            <option>Css</option>
+            <option>Xpath</option>
+            <option>Link</option>
+            <option>Id</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <label for="classes" style="font-size: 15px">Input:</label>
+          <input type="text" [(ngModel)]="act.account" style="width:150px">
+        </div>
+        <br>
+        <br>
+        <br>
+        <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
+                  
+        <!-- </div> -->
+        <!-- <button *ngIf="add==true" (click)="saveData(act)" class="btn btn-info">Save</button>  -->
+        <a class="btn btn-info btn-lg" *ngIf="add==true" (click)="saveData(act)" style="margin-left: 45%">Save </a>
+   
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="modal" id="myModal" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header" style="background-color: rgb(166, 243, 11);height: 50px;">
+</div>
+
+<div class="modal-body">
+  <div>
+      Action:
+      <select [(ngModel)]="act.actions" (change)="excel(act.actions)"  style="width:150px" >
+        <option></option>
+        <option *ngFor="let act of resultactions"  [ngValue]="act" >{{act.actions}}</option>  
+        </select>
+  </div><br>
+ <div [hidden]="showExcelData==true">
+    Object:<select [(ngModel)]="act.object" style="width:150px">
+        <option>Css</option>
+        <option>Xpath</option>
+        <option>Link</option>
+        <option>Id</option>
+        </select>
+ </div><br>
+ <div [hidden]="showExcelData==true">
+    Input: &nbsp;<input type="text" [(ngModel)]="act.account" style="width:150px">
+</div>
+ <div [hidden]="showExcelData==false">
+  ExcelFile:&nbsp; <select [(ngModel)]="excelOpal.excelFile"  (change)="excelOpalFunCall(excelOpal)" style="min-width:150px" >
+        <option></option>
+        <option *ngFor="let fileExcel of excelFileName" >{{fileExcel}}</option>  
+        </select>
+ </div><br>
+ <div [hidden]="showExcelData==false">
+    SheetName:&nbsp;<input type="text" [(ngModel)]="excelOpal.excelSheet" (change)="excelOpalFunCall(excelOpal)" style="width:150px">
+ </div><br>
+ <div [hidden]="showExcelData==false">
+  RowNo:&nbsp;<input type="text" [(ngModel)]="excelOpal.excelRow" (change)="excelOpalFunCall(excelOpal)" style="width:150px">
+ </div><br>
+ <div [hidden]="showExcelData==false">
+    Cell_No:&nbsp;<input type="text" [(ngModel)]="excelOpal.excelCell" (change)="excelOpalFunCall(excelOpal)"   style="width:150px">
+ </div><br>
+<div [hidden]="showExcelData==false">
+    Input: &nbsp;<input type="text" [(ngModel)]="comExcelValue">
+</div><br>
+
+<div>
+    <button (click)="saveData(act,comExcelValue)" style="margin-left:80px" class="btn btn-info"
+    data-dismiss="modal">Save</button>
+</div>
+
+
+</div>
+
+<div class="modal-footer">
+<button type="button" class="btn btn-info" data-dismiss="modal" >Close</button>
+</div>
+</div>
+</div>
+</div> -->
+<br><br>
+ 
+<!-- <table class="opaltable" style=" width:100%;border:1px solid black;">
+<thead>
+<tr style="background-color: lightgray">
+<th style="width:110px">Action</th>
+<th style="width:110px">Object</th>
+<th style="width:110px">Input</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let data of objectData;">
+<td>{{data.action}}</td>
+<td>{{data.object}}</td>
+<td>{{data.input}}</td>
+</tbody>
+</table> -->
+</div>
+</div>
+</div>
+<div>
+<!-- <button type="button" class="btn btn-info" (click)="SendMethod(reusable)" style="margin-left:50%">Save</button> -->
+
+</div>

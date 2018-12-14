@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3" class="searchRun">
+            Date:<br>
+            <span style="margin-left:20px;width: 100px;">From</span><input type="date" displayFormat="dd/mm/YYYY" [(ngModel)]="from" ><br><br>
+            <span style="margin-left:20px;width:100px;">To</span><input type="date" displayFormat="dd/mm/YYYY" [(ngModel)]="todate" ><br><br>
+            <button type="button" id="content" class="btn btn-info" style="margin-left:20px;margin-top:8px;" (click)="runNumberSearch(from,todate)">Search</button>
+            <br>
+            <br>
+            <table class="table table-bordered opaltable">
+            <thead>
+            <tr>
+            <th>Sl:No</th>
+            <th>Run Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor =" let run of runNumber;let i=index" (click)="fetchRunDetails(run._id.runNumber,i)"
+            [class.active]="i == index1"> 
+            <td>{{i+1}}</td>
+            <td>{{run._id.runNumber}}</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="col-sm-9 col-md-9 col-lg-9">
+            <div class="table table-bordered opaltable" style="border:1px solid;height:500px;overflow-x: scroll;">
+                <thead>
+                    <tr>
+                    <th>Sl</th>
+                    <th>Module</th>
+                    <th>FileName</th>
+                    <th>ScenarioName</th>
+                    <th>TestCase</th>
+                    <th>Result</th>
+                    <th>Error</th>
+                    <th>Screenshot</th>
+                    <th>Video</th>
+                    <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody style="border:1px solid">
+                    <tr *ngFor ="let rept of reportDetails;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{rept.ModuleFolder}}</td>
+                    <td>{{rept.FileName}}</td>
+                    <td>{{rept.ScenarioName}}</td>
+                    <td>{{rept.TestCase}}</td>
+                    <td> 
+                    <span *ngIf="rept.Result == 'Fail'" style="color:red">{{rept.Result}}</span>
+                    <span *ngIf="rept.Result == 'Pass'" style="color:green">{{rept.Result}}</span>
+                    </td>
+                    <td (click)="showError(rept.Error)">
+                    <span *ngIf="rept.Error == undefined" ></span>
+                    <span *ngIf="rept.Error !== undefined" >View</span>
+                    </td>
+                    <td (click)="onNavigate(rept.ScreenShot)">
+                    <span *ngIf="rept.ScreenShot == null" ></span>
+                    <span *ngIf="rept.ScreenShot !== null" >View</span>
+                    </td>
+                    <td (click)="onClickVideo(rept.Video)">View</td>
+                    <td>{{rept.Duration}}</td>
+                    </tr>
+                </tbody>
+            </div> 
+            <button type="button" class="btn btn-info" style="margin-left:400px;margin-top:20px;" (click)="mergeTestLink(resulttypes)" >Merge test link</button>
+        </div>
+    </div>
+</div>

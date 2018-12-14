@@ -1,0 +1,178 @@
+
+css div.j {
+    background-color: lightgrey;
+    width: 50px;
+    border: 2px solid green;
+    padding: 2px;
+    margin: 2px;
+    }
+    
+    h1 {
+    text-align: center;
+    }
+    
+    div.h {
+    float: center;
+    padding: 20px;
+    }
+    
+    
+    div.g {
+    float: right;
+    }
+    
+    
+    .border {
+    border: 1px solid black;
+    height: 400px;
+    width: auto;
+    overflow-y: auto;
+    background-color: #f4f7f8;
+    }
+    
+    
+    
+    body {
+    width: 100%;
+    }
+    
+    
+    
+    th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    width: 900px;
+    }
+    
+    
+    th.active {
+    width: 2000px;
+    }
+    
+    .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 13px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    
+    .scriptImport {
+    margin-left: 18%;
+    margin-top: -30%;
+    
+    }
+    
+    
+    
+    table.scroll {
+    
+    border-collapse: collapse;
+    border-spacing: 100%;
+    border: 1px solid black;
+    width: 80%;
+    
+    }
+    
+    table.scroll tbody,
+    table.scroll thead {
+    display: block;
+    }
+    
+    thead tr th {
+    height: 50px;
+    line-height: 30px;
+    
+    text-align: left;
+    }
+    
+    table.scroll tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: auto;
+    
+    
+    }
+    
+    td {
+    line-height: 35px;
+    }
+    
+    
+    .loader {
+    border: 10px solid black;
+    border-radius: 50%;
+    border-top: 10px solid green;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    
+    animation: spin 2s linear infinite;
+    }
+    
+    @-webkit-keyframes spin {
+    0% {
+    -webkit-transform: rotate(0deg);
+    }
+    
+    100% {
+    -webkit-transform: rotate(360deg);
+    }
+    }
+    
+    @keyframes spin {
+    0% {
+    transform: rotate(0deg);
+    }
+    
+    100% {
+    transform: rotate(360deg);
+    }
+    }
+    
+    
+    option{
+        font-size: 18px;
+    /* font-weight: 700; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+
+    label
+    {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .scriptImport {
+    margin-left: 18%;
+    margin-top: -40%;
+    
+    }
+    
+    
+    .form-control {
+    padding: 3px 6px;
+    }
+    
+    .btn {
+    
+    padding: 4px 6px;
+    }
+
+
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}

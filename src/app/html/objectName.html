@@ -1,0 +1,116 @@
+<style>
+    div.c {
+    position: absolute;
+    left: 380px;    
+    width: 800px;
+    height: 220px;
+    font-size: 18px;
+    margin-left: -300px
+   
+} 
+</style>
+
+
+<div class="c">
+<br>
+<br>
+  ObjectName:<input type="text" [(ngModel)]="objectName">
+  
+  <a href="#" class="btn btn-info btn-lg"    data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-plus-sign"></span> Plus
+</a>
+<br>
+<br>
+
+    <div>
+
+     
+         <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color: yellowgreen">
+                    
+                     
+                    </div>
+                    <div class="modal-body">
+                      
+                   Locators:<select [(ngModel)]="locators"  style="width:150px">
+                      <option >Css</option>
+                      <option >Xpath</option>
+                      <option >Link</option>
+                      <option >Id</option>
+                   </select> &nbsp;&nbsp;&nbsp;
+                    <h4 >Name:<input type="text" style="width:150px" [(ngModel)]="name"></h4>
+                    &nbsp;&nbsp;&nbsp;
+                    <h4 >Value:<input type="text" style="width:150px" [(ngModel)]="value"></h4>
+                    &nbsp;&nbsp;&nbsp;
+                    <h4 >URL:<input type="text" style="width:150px" [(ngModel)]="url"></h4>
+    
+                    <button (click)="objectData(name,value,url,locators)"  class="btn btn-info" data-dismiss="modal">Save</button>
+                  
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-sm-9 col-md-6 col-lg-9"  >
+                
+        <div class="border" style="height: 400px;font-size: 20px">
+          
+            <div class="table-wrapper-scroll-y">
+
+                <table class="table table-bordered "  style="width:150%;height: 300px;font-size: 20px;border:1px solid black">
+                  <thead>
+                    <tr style="background-color: lightgray">
+                      <th scope="col">Name</th>
+                      <th scope="col">Value</th>
+                      <th scope="col">Url</th>
+                 
+                    
+                    </tr>
+                  </thead>
+                  <tbody >
+         
+                    <tr *ngFor="let displayNewObject of displayNewObject"   >
+                     
+                      <td  >{{displayNewObject.name}}</td>
+                   
+                    
+                      <td  >{{displayNewObject.value}}</td>
+                   
+
+                       <td  >{{displayNewObject.url}}</td> 
+                     
+                 
+                      
+                    </tr>
+      
+                  
+                  </tbody>
+                  
+                    
+                </table>
+                
+              </div>
+        </div>
+
+</div>
+
+
+
+
+    <router-outlet></router-outlet>
+</div>

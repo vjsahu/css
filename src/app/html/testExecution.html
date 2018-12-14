@@ -1,0 +1,92 @@
+<div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        <label for="module">Module:</label>
+        <select class="form-control" [(ngModel)]="moduleId" (change)="moduleIndex(moduleId)">
+        <option>All</option>
+        <option *ngFor="let var_moduleName of moduleNames" value="{{var_moduleName.moduleId}}">{{var_moduleName.moduleName}}</option>
+        </select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        <label for="feature">Features:</label>
+        <select class="form-control" [(ngModel)]="featureId">
+        <option>All</option>
+        <option *ngFor="let var2_featureName of featureNames" value="{{var2_featureName.featureId}}">{{var2_featureName.featureName}}</option>
+        </select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        <label for="type">Type:</label>
+        <select class="form-control" [(ngModel)]="selectedType">
+        <option>All</option>
+        <option *ngFor="let type of typeArray" value="{{type.typeId}}">{{type.typeName}}</option>
+        </select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        <label for="priority">Priority:</label>
+        <select class="form-control " [(ngModel)]="selectedPriority">
+        <option>All</option>
+        <option *ngFor="let priority of priorityArray" value="{{priority.priorityId}}">{{priority.priorityName}}</option>
+        </select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:20px">
+        <button type="button" class="btn btn-info" (click)=search(moduleId,featureId,selectedType,selectedPriority)>Search</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="srch==true">
+        <div class="col-lg-9 col-md-9 col-sm-9" style="font-size: 15px;">
+        <table class="scroll opaltable" style="width:100%; margin-top:3%">
+        <thead>
+        <tr>
+        <th style="width:3%"></th>
+        <th style="width:18%">Module Name</th>
+        <th style="width:20%">Feature Name </th>
+        <th style="width:40%">Script Name</th>
+        <th>Type</th>
+        <th>Priority</th>
+        </tr>
+        </thead>
+        <tbody class="scroll table table-bordered">
+        {{allData}}
+        <tr *ngFor="let test of testScriptsData; let i = index;">
+        <td *ngIf="srch==true" style="width:3%"><input type="checkbox" (click)=row(i,test)></td>
+        <td *ngIf="srch==true" style="width:18%">{{test.moduleName}}</td>
+        <td *ngIf="srch==true" style="width:20%">{{test.featureName}}</td>
+        <td *ngIf="srch==true" style="width:40%">{{test.scriptName}}</td>
+        <td *ngIf="srch==true">{{test.type}}</td>
+        <td *ngIf="srch==true">{{test.priority}}</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+        <div style="height:95%;font-size: 20px;border: 1px solid;overflow:auto; margin-top:8%">
+        <ul style="list-style-type:none;" *ngFor="let module of featureDetails3 ; let i = index">
+        <li (click)="manualtoggle(module.moduleName,i)">
+        <span class="glyphicon glyphicon-folder-open"> {{module.moduleName}} </span>
+        </li>
+        <ul style="list-style-type:none;" *ngIf="i===ind">
+        <li *ngFor="let module1 of module.featureName ;let j = index" (click)="manualtoggle2(module1.featureName,j)">
+        <span class="glyphicon glyphicon-folder-open"> {{module1.featureName}}</span>
+        <ul style="list-style-type:none;" *ngIf="j===indU">
+        <li *ngFor="let module2 of module1.scriptName">
+        <span class="glyphicon glyphicon-folder-open"> {{module2.scriptName}}</span>
+        </li>
+        </ul>
+        </ul>
+        </ul>
+        <div *ngIf='showloader' class="loader"></div>
+        {{displayStatus}}{{timeRemaining}}
+        </div>
+        <div>
+
+        <button type="button" class="btn btn-info" (click)=run() style="margin-top: 2%">Run</button>
+        <!-- <button type="button" class="btn btn-info" (click)=DocRun() style="margin-left:7%;margin-top:2%">DocRun</button> -->
+        </div>
+        <!-- <br> -->
+
+        <!-- <button type="button" class="btn btn-info" (click)=run() style="width: 100px;font-size: 20px;border-radius:5px;padding: 5px;margin-left:5%;margin-top: 10px">Run</button> -->
+
+        <!-- <button type="button" class="btn btn-info" (click)=DocRun() style="width:100px;font-size:18px;border-radius:5px;padding:5px;margin-left:900px;margin-top:-40px">DocRun</button> -->
+        </div>
+    </div>
+</div>

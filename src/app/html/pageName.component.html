@@ -1,0 +1,37 @@
+<style>
+    div.c {
+    position: absolute;
+    left: 50px;    
+    width: 400px;
+    height: 220px;
+    font-size: 18px;
+   
+} 
+</style>
+
+
+<div  >
+
+<br>
+<br>
+<br>
+
+
+
+<div class="c" *ngIf="clearHtml==undefined" >
+        PageName<input type="text" [(ngModel)]="pageName">
+<br>
+<br>
+<br>
+
+Image<span style="margin-left: 38px;"><input type="text"  [(ngModel)]="image"></span>
+<br>
+<br>
+<br>
+ 
+<button (click)=savePageDetails(pageName,image)>Save</button>
+</div>
+
+    <router-outlet></router-outlet>
+
+</div>

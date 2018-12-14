@@ -1,0 +1,200 @@
+
+<div class="container">
+        <div class="col-sm-3" style="height: 430px;font-size: 20px;border: 1px solid;overflow:auto;">            
+
+        <ul>
+        <li><h4>Test Cases</h4></li>
+        <ul>
+        <li><h4>Orange HRM</h4></li>
+        <ul>
+        <li><h4>Login</h4></li>
+        </ul>
+        </ul>
+        </ul>
+        </div>
+        <div class="container-fluid col-sm-9">
+          
+        <div class="table table-bordered" style="height:430px;font-size: 15px;width:750px;border:1px solid black;overflow:auto">
+        <!-- <a href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+        <span class="glyphicon glyphicon-plus-sign"></span> Plus
+        </a> -->
+        <div>
+            <a class="btn btn-info btn-lg" (click)="Adddata()"><span class="glyphicon glyphicon-plus-sign"></span> Add </a>
+            <a class="btn btn-info btn-lg" (click)="clear()"><span class="glyphicon glyphicon-trash"></span> Clear </a>
+            <a class="btn btn-info btn-lg" (click)="delete()" *ngIf="disable==true"><span class="glyphicon glyphicon-minus"></span> Delete </a>
+  
+          </div>
+        <!-- <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content"> -->
+        <!-- <div class="modal-header" style="background-color: rgb(166, 243, 11);height: 50px;">
+        
+        </div> -->
+        
+        <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        </div> -->
+        <!-- </div>
+        </div>
+        </div> -->
+        <br>
+        <!-- <span style="margin-left:30px"> Enter File Name </span> <input type="text" [(ngModel)]="filename"> -->
+        <div style="border:1px solid black;">
+            <table class="opaltable" style=" width:100%;border:1px solid black;">
+              <thead>
+                <tr style="background-color: lightgray;">
+                  <th>Type</th>
+                  <th >Action</th>
+                  <th >Object</th>
+                  <th >Input</th>
+                </tr>
+              </thead>
+            </table>
+        </div>
+        <div class="tbodydiv" style="height: 150px;border:1px solid black;">
+            <table class="opaltable" style=" width:105%;">
+              <tr *ngFor="let data of objectTestCase; let i = index;"  (click)="row(data,i)" >
+                  <td style="padding: 0px;font-size: 15px" >
+                      <input class="inputtext" type="text" list="type" value={{data.type}} style="height: 20px"/>
+                      <datalist id="type" >
+                        <option>Actions</option>
+                        <option>Functions</option>
+                        <option>Assertions</option>
+                      </datalist>
+                     </td>
+                     <td style="padding: 0px;font-size: 15px" >
+                        <input class="inputtext" type="text" list="action" value={{data.action}} style="height: 20px"/>
+                        <datalist id="action" >
+                          <option></option>
+                          <option>function1</option>
+                          <option>function2</option>
+                          
+                          
+                        </datalist>
+                       </td>
+                       <td style="padding: 0px;font-size: 15px" >
+                          <input class="inputtext" type="text" list="object" value={{data.object}} style="height: 20px"/>
+                          <datalist id="object" >
+                            <option>css</option>
+                            <option>Xpath</option>
+                            <option>Link</option>
+                            <option>Id</option>
+                            
+                          </datalist>
+                         </td>
+                         <td style="padding: 0px;font-size: 15px" >
+                            <input class="inputtext" type="text" list="browsers" value={{data.input}} style="height: 20px"/>
+                            <datalist id="browsers" >
+                             
+                            </datalist>
+                           </td>
+</tr>
+</table></div>
+<!-- <button class="btn btn-info"
+        (click)="actionSave(filename)">Save</button> -->
+        <a class="btn btn-info btn-lg" (click)="actionSave(filename)" style="margin-left: 45%" *ngIf="saved==true">Save </a>
+
+        <br>
+        <br>
+
+           <!-- <button class="btn btn-info"  (click)="addBase()">+ADD</button> -->
+        <!-- <table class="opaltable" style="width:100%;border:1px solid black;">
+        <thead>
+        <tr style="background-color: lightgray">
+          <th>
+             Type
+
+          </th>
+        <th>Action</th>
+        <th>Object</th>
+        <th>Input</th>
+        </tr>
+        </thead>
+        <tbody>
+          
+
+            <tr>
+              <td>
+
+                  <select [(ngModel)]="cases.actions" (change)="getAny(cases.actions)">
+                      <option></option>
+                      <option *ngFor="let key of resulttypeKeys">{{key.Key}}</option>
+                  
+
+                      
+              </select>
+
+              </td>
+
+               
+                <td> 
+                  <select [(ngModel)]="cases.actions">
+                          <option></option>
+                          <option *ngFor="let act of typeKeysAll" >{{act.actions}}</option>
+                          
+                      
+   
+                          
+                  </select>
+                 
+                  
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="cases.objects">
+                </td>
+                <td>
+                   <input type="text" [(ngModel)]="cases.value">
+               </td>
+                
+               </tr> 
+        <tr *ngFor="let displayNewObject of objectTestCase">
+        <td >{{displayNewObject.action}}</td>
+        <td >{{displayNewObject.object}}</td>
+        <td >{{displayNewObject.input}}</td> 
+        </tr>
+        </tbody>
+        </table>  -->
+        <div class="container-fluid" *ngIf="add==true" style="background-color: lightgray;font-size: 15px">
+            <div class="col-lg-2 col-md-2 col-sm-2" >
+                <label>Type:</label>
+                <select [(ngModel)]="cases.actions" (change)="getAny(cases.actions)">
+                    <option></option>
+                    <option *ngFor="let key of resulttypeKeys">{{key.Key}}</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2" >
+                <label>Action:</label>
+                  <select [(ngModel)]="cases.actions">
+                        <option></option>
+                        <option *ngFor="let act of typeKeysAll" >{{act.actions}}</option>
+                  </select>                
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3" >
+                  
+    
+                  <label>Object:</label>
+                  <select [(ngModel)]="alltest.object" style="width:150px" >
+                  <option >Css</option>
+                  <option >Xpath</option>
+                  <option >Link</option>
+                  <option >Id</option>
+                  </select>
+              </div>
+              
+              <div class="col-lg-3 col-md-3 col-sm-3" >
+                  <label>Input:</label>
+                  &nbsp;<input type="text" [(ngModel)]="alltest.account" style="width:150px" >
+
+
+              </div>
+            
+        
+              <!-- <button (click)="saveData(cases,alltest)"  class="btn btn-info">Save</button> -->
+              <a class="btn btn-info btn-lg" (click)="saveData(cases,alltest)" style="margin-left: 45%">Save </a>
+           
+            </div>
+        </div>
+        
+        </div> 
+        
+        </div>

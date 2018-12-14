@@ -1,0 +1,28 @@
+     .opalLabel
+    {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    .modal {
+    font-size: 15px; 
+    }
+    input.ng-untouched.ng-pristine.ng-valid {
+     width: -webkit-fill-available;
+ }
+
+ .tbodydiv{
+    overflow: auto;
+    overflow-x:hidden;
+    height: 280px;
+   
+}
+
+.inputtext{
+    border:none;
+}
+
+option{
+    border:none;
+}

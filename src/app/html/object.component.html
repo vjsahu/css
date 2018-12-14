@@ -1,0 +1,197 @@
+
+ <style type="text/css">
+       
+
+  #pad{
+      position:absolute;  
+      /* background-color:red; */
+  }
+      #ctxMenu{
+      display:none;
+      z-index:100;
+
+  }
+  #enu{
+      display:none;
+      z-index:100;
+      /* top:500px; */
+  }
+  #notepad{
+      position:absolute;  
+/*   
+      background-color:red; */
+  }
+  menu {
+      position:absolute;
+      display:block;
+      left:0px;
+      top:0px;
+     
+      height:40px;
+      width:200px;
+      padding:0;
+      margin:0;
+      border:1px solid;
+      background-color:white;
+      font-weight:normal;
+      white-space:nowrap;
+      
+  }
+  menu:hover{
+      background-color:#eef;
+      font-weight:bold;
+  }
+  menu:hover > menu{
+      display:block;
+  }
+  menu > menu{
+      /* display:none; */
+      position:relative;
+      top:30px;
+      left:-470px;
+      width:200px;
+      margin-left:250px;
+  
+    
+  }
+  menu[title]:before{
+      content:attr(title);
+  }
+  menu:not([title]):before{
+      content:"\2630";
+  }
+
+ul, #myUL {
+  list-style-type: none;
+} 
+
+ #myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* .caret {
+  cursor: pointer;
+
+  user-select: none;
+} */
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 60px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+.ested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+
+
+
+
+
+
+  
+     </style> 
+
+
+
+
+
+
+<div>
+   
+    <div class="col-sm-3" style="border:1px solid black;height:500px">
+
+  <ul id="myUL">
+    <li><span class="caret"  id="notepad"><h4>Captured</h4></span>
+        <div id="ctxMenu"  >
+       <menu style="margin-top:60px ;margin-left:50px">
+   <menu  style="margin-left:470px;margin-top:-60px" title="New Page" (click)="landCreatePage()">
+        </menu>
+        <menu style="margin-left:470px" title="Test Page" >
+            </menu>
+            <menu style="margin-left:470px"  title="Main Page" >
+                </menu>
+                <menu   style="margin-left:470px" title="search" >
+                    </menu>
+         </menu>      
+
+    
+</div>
+       
+      <ul class="nested">
+            <br>
+            <br>
+            <br>
+         
+            <span  id="pad">   <li *ngFor="let name of pageName" (click)="openObject(name.pageName)"><h4> {{name.pageName}}  </h4>
+     
+           <h3> <menu title="CreateObject" (click)="createObject(name.pageName)" id="enu" style="margin-left:-220px;margin-top:-200px">
+            
+            </menu></h3>
+        
+            <ul  *ngIf="hideData!=undefined"  >
+                   
+ <span  > <li *ngFor="let displayObjectName of pageName;let i=index" > <h4 > 
+        <!-- {{displayObjectName}}
+
+        {{displayObjectName.objectName}} -->
+        <li *ngFor="let displayObject of displayObjectName.objectName;" (click)="gg(displayObject.objectName)">
+    {{displayObject.objectName}}
+    </li>
+  
+ </h4>
+              
+      
+        
+               </li>
+            </span>
+              </ul>
+     
+       </li>
+    </span>
+      </ul>
+     </li>
+</ul> 
+
+</div>
+<div  class="col-sm-9" style="border:1px solid black;height:500px">
+        <div *ngIf="displayPage==true"   >
+                <app-pagename></app-pagename>
+         </div> 
+         <div *ngIf="displayObject==true || openPerticularPage==true"  >
+                <app-objectname></app-objectname>
+         </div>
+    
+</div>
+
+
+
+<!-- 
+ <div *ngIf="displayPage==true"   >
+        <app-pagename></app-pagename>
+ </div> -->
+
+ 
+
+ <router-outlet  ></router-outlet>
+  
+ 
+  
+  </div>

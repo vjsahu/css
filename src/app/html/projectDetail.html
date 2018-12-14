@@ -1,0 +1,51 @@
+<div class="container-fliud">
+    <div class="row side" style="height:60px">
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+        <h3 class="header1">Test Automation Platform</h3>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+        <h3 class="header1">{{projectName}}</h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+        <h3 class="glyphicon glyphicon-user">{{myUsername}}</h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+        <h3 style="cursor: pointer"  class="glyphicon glyphicon-log-out" (click)="signOutFun()">SignOut</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2 sidenav">
+            <br>
+            <div class="dropdown">
+            <a href="#"  data-toggle="dropdown">Test Planning
+            </a>
+            <ul class="dropdown-menu">
+            <li class="li"><a [routerLink]="['/importComponent']">Script Import</a></li>
+            <li><a [routerLink]="['/editComponent']">Edit</a></li>
+            <li><a [routerLink]="['/createTestCaseComponent']">Create Test Case</a></li>
+            <li><a [routerLink]="['/objectRepository']">Object Repository</a></li>
+            <li><a [routerLink]="['/createReusableFunction']">Create Reusable Function</a></li>
+
+            </ul>
+            </div>
+            <br>  
+            <div class="dropdown">
+            <a href="#" data-toggle="dropdown">Test Execution
+            </a>
+            <ul class="dropdown-menu">
+            <li><a [routerLink]="['/captureLabComponent']">Mobile</a></li>
+            <li><a [routerLink]="['/testExcecutionComponent']">Execution</a></li>                                
+            </ul>
+            </div>
+            <br>
+            <div class="dropdown">
+            <a [routerLink]="['/reportComponent']">Report</a>
+            </div>
+        </div>
+
+        <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+        <router-outlet></router-outlet> 
+        </div>
+    </div>
+</div>

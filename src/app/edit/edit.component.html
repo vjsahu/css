@@ -1,0 +1,92 @@
+    <div class="container-fluid" style="background-color:white">
+    <span style="font-size: 20px;font-weight: bold" *ngIf="ed==true">Select Test Script </span>
+    <span style="font-size: 20px;font-weight: bold;margin-left: 170px" *ngIf="ed==true" >Edit Test Case </span>
+    <div class="container-fluid" > 
+    <div class="col-sm-4 col-md-4 col-lg-4" style="height: 470px;font-size: 20px;border: 1px solid;overflow:auto;" > 
+    <ul style = "list-style-type:none;" *ngFor="let module of moduleName ; let i = index" >
+    <li (click)="clickModulee(module,i)">
+        
+    <span class="glyphicon glyphicon-folder-open" > {{module.moduleName}} </span>
+    </li>
+    <ul *ngIf="i===ind" >
+    <li style = "list-style-type:none;" *ngFor="let feature of modd ; let j=index" (click)="clickFeature(feature,j)" >
+    <span class="glyphicon glyphicon-folder-open">{{feature.featureName}}
+    </span>
+    </li>
+    </ul>
+    
+    </ul> 
+    </div>
+    
+    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8" >
+    
+    <div class="border" style="height: 470px;border:1px solid black;overflow:auto">
+    
+    
+    <table class="table table-bordered opaltable">
+    <thead>
+    <!-- style="background-color:darkgray;font-size: 15px" -->
+    <tr class="tablerow">
+    <th>Test Case</th>
+    <th>Layor</th>
+    <th>Type</th>
+    <th>Priority</th>
+    <th>Time(ms)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let script of feat;let i=index;" >
+    
+    <td >{{script.scriptName}}</td>
+    <td>
+    <select >
+    
+    <option >
+    UI
+    </option>
+    <option >
+    API
+    </option>
+    <option >
+    DB
+    </option>
+    </select>
+    </td>
+    <td>
+    <select [(ngModel)]="script.typeName" [value]="nanan" >
+    
+    <option *ngFor="let ty of type" >
+    {{ty.typeName}}
+    </option>
+    </select>
+    </td>
+    <td>
+    <select [(ngModel)]="script.priorityName" >
+    
+    <option *ngFor="let py of priority" >
+    {{py.priorityName}}
+    </option> 
+    </select>
+    </td>
+    <td>
+    
+    <input [(ngModel)]="script.time">
+    </td>
+    
+    </tr>
+    
+    
+    </tbody>
+    </table>
+    
+    </div>
+    
+    <br>
+    <button type="button" class="btn btn-info" (click)=Save() style="margin-left: 340px">Save</button>
+    
+    </div>
+    </div>
+    <app-import *ngIf="displayImport==true"></app-import>
+    <!-- </table> -->
+    <router-outlet></router-outlet>
+    </div>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+   <div class="import">
+      <br>
+      <br>
+      GitUrl:<input type="text" [(ngModel)]="gitUrl"> 
+      <button class="btn btn-info" (click)="gitClone(gitUrl)"  >GitClone</button>
+      <br>
+      <br>
+      {{gitMessage}}
+      <br><br>
+      Path To Install Node Modules:<input type="text" [(ngModel)]="npmPath">
+      <button class="btn btn-info" (click)="npmInstall(npmPath)">Install</button>
+      <br>
+      <br>
+      {{npmMessage}}
+      <br>
+      <span>
+      <button class="btn btn-info" style="margin-left: 505px" (click)="saveImportData()">Save</button>
+      </span>
+      <router-outlet></router-outlet>  
+   </div>
+</div>
